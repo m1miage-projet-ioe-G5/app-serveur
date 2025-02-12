@@ -19,8 +19,8 @@ public class SignalementEntity {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "geometry")
-    private Point localisation;
+//    @Column(columnDefinition = "geometry")
+//    private Point localisation;
 
     @Enumerated(EnumType.STRING)
     private EtatSignalement etatSignalement;
