@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Nom du projet -->
+	<name>Projet-IOE-Moovly</name>
+
+	<!-- Modules du projet -->
+	<modules>
+		<module>server</module>
+		<module>rest-api</module>
+	</modules>
+
+	<!-- Définition de l'identifiant de groupe, de l'artefact et de la version -->
+	<groupId>m1-miage.tlse.ioe.G5</groupId>
+	<artifactId>moovly.server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- Type de packaging du projet -->
+	<packaging>pom</packaging>
+
+	<!-- Définition du parent Spring Boot Starter -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.0</version>
+		<relativePath/>
+	</parent>
+
+	<!-- Propriétés globales -->
+	<properties>
+		<java.version>17</java.version> <!-- Spring Boot 3.x nécessite Java 17 -->
+		<springBoot.version>3.0.0</springBoot.version>
+		<springDoc.version>2.3.0</springDoc.version> <!-- Version compatible avec Spring Boot 3.x -->
+		<lombok.version>1.18.30</lombok.version>
+		<mapstruct.version>1.5.3.Final</mapstruct.version>
+	</properties>
+
+	<!-- Gestion des dépendances -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- Lombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- MapStruct -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>${mapstruct.version}</version>
+			</dependency>
+
+			<!-- SpringDoc pour Swagger/OpenAPI -->
+			<dependency>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<version>${springDoc.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Plugins Maven -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Plugin Maven Spring Boot -->
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
