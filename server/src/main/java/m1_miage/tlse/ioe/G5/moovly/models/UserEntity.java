@@ -28,8 +28,8 @@ public class UserEntity {
         private String adresse;
         private boolean notificationsEnabled;
 
-        @OneToMany(mappedBy = "userEntity")
-        private Set<ItineraireEntity> itineraireEntities;
+//        @OneToMany(mappedBy = "userEntity")
+//        private Set<ItineraireEntity> itineraireEntities;
 
         @OneToMany(mappedBy = "userEntity")
         private Set<SignalementEntity> signalementEntities;
