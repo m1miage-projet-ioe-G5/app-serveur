@@ -1,7 +1,6 @@
 server:
   port: 8081
   servlet:
-    #application context
     context-path: /api
 
 spring:
@@ -11,7 +10,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/yourDB
     username: yourUserName
-    password: YourPassWord
+    password: yourPassWord
 
   jpa:
     open-in-view: false
