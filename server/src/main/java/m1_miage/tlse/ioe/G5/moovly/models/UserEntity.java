@@ -3,6 +3,7 @@ package m1_miage.tlse.ioe.G5.moovly.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +15,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class UserEntity {
         @Id
-//        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String numero;
         @Column( updatable = true)
         private String nom;
@@ -23,13 +23,15 @@ public class UserEntity {
 
         @Column(unique = true)
         private String email;
-
+        @Column
+        private LocalDate dateCreation;
+        @Column
         private String motDePasse;
-        private String adresse;
+        @Column
         private boolean notificationsEnabled;
 
-//        @OneToMany(mappedBy = "userEntity")
-//        private Set<ItineraireEntity> itineraireEntities;
+        @OneToMany(mappedBy = "userEntity")
+        private Set<ItineraireEntity> itineraireEntities;
 
         @OneToMany(mappedBy = "userEntity")
         private Set<SignalementEntity> signalementEntities;
