@@ -4,4 +4,5 @@ public enum EtatNotification {
     CREE,
     ENVOYEE,
     LUE,
+
 }

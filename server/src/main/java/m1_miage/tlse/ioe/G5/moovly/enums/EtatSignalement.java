@@ -5,4 +5,5 @@ public enum EtatSignalement {
     ENCOURS,
     VERIFIE,
     RESOLUE,
+
 }

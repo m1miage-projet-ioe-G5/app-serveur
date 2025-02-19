@@ -26,6 +26,7 @@ public class CorsConfiguration extends org.springframework.web.cors.CorsConfigur
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Appliquer à tous les endpoints
                 .allowedOrigins("http://localhost:4200")  // URL de votre app Angular
+
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
