@@ -16,11 +16,10 @@ import java.time.LocalDateTime;
 @Setter
 public class SignalementEntity {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(columnDefinition = "geometry")
-//    private Point localisation;
+    @Column(columnDefinition = "geometry",nullable = false)
+    private Point localisation;
 
     @Enumerated(EnumType.STRING)
     private EtatSignalement etatSignalement;
@@ -34,4 +33,7 @@ public class SignalementEntity {
 
     @ManyToOne
     private UserEntity userEntity;
+
+    @ManyToOne
+    private LieuEntity lieuEntity;
 }
