@@ -12,8 +12,6 @@ import java.util.List;
 
 import java.util.List;
 
-import java.util.List;
-
 @Mapper
 public interface UserMapper {
     UserResponseDTO toUserResponseDTO(UserEntity userEntity);
