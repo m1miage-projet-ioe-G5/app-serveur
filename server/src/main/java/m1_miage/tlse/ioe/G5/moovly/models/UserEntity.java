@@ -1,9 +1,12 @@
 package m1_miage.tlse.ioe.G5.moovly.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -13,20 +16,21 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserEntity {
         @Id
-        private String numero;
-        @Column( updatable = true)
+        @Column(nullable = false)
+        private String email;
+
         private String nom;
         @Column
         private String prenom;
 
-        @Column(unique = true)
-        private String email;
         @Column
-        private LocalDate dateCreation;
-        @Column
+       private LocalDate dateCreation;
+        @NotBlank
         private String motDePasse;
         @Column
         private boolean notificationsEnabled;
+
+        private String role;
 
         @OneToMany(mappedBy = "userEntity")
         private Set<ItineraireEntity> itineraireEntities;

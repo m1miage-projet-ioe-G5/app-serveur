@@ -11,15 +11,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Schema(description = "Présentation d'un utilisateur")
 public class UserResponseDTO {
-    @Schema(description = "numero identifiant d'un utilisateur")
-    private String numero;
+    @Schema(description = "Identifiant d'un utilisateur")
+    private String email;
     @Schema(description = "nom de l'utilisateur")
     private String nom;
     @Schema(description = "prenom de l'utilisateur")
     private String prenom;
-//    @Schema(description = "l'adresse mail de l'utilisateur")
-//    private String mail;
-//    @Schema(description = "Date d'inscription de l'utilisateur")
-//    private LocalDateTime dateCreation;
+   @Schema(description = "Mot de passe de l'utilisateur")
+    private String motDePasse;
 
 }

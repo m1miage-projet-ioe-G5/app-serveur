@@ -13,9 +13,11 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Corps de la requête de création d'un utilisateur")
 public class UserCreationRequest {
     @Schema(description = "numéro identiant un utilisateur")
-    private String numero;
+    private String email;
     @Schema(description = "nom de l'utilisateur")
     private String nom;
     @Schema(description = "Prénom de l'utilisateur")
     private String prenom;
+    @Schema(description = "Mot de pass de l'utilisateur")
+    private String motDePasse;
 }
