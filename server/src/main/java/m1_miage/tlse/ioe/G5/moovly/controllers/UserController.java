@@ -8,6 +8,8 @@ import m1_miage.tlse.ioe.G5.moovly.response.UserResponseDTO;
 import m1_miage.tlse.ioe.G5.moovly.services.UserService;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController implements UserEndpoint {
@@ -17,8 +19,30 @@ public class UserController implements UserEndpoint {
         return userService.create(userCreationRequest);
     }
 
-//    @Override
-//    public UserResponseDTO getAllUsers(UserResponseDTO userResponseDTO) {
-//        return null;
-//    }
+    /**
+     * @return
+     */
+    @Override
+    public List<UserResponseDTO> getAllUsers() {
+        return userService.findAllUsers();
+    }
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public UserResponseDTO getUserByEmail(String email) {
+        return userService.findUserByEmail(email);
+    }
+
+    /**
+     * @param email
+     * @return
+     */
+    @Override
+    public void deleteUserByEmail(String email) {
+        userService.deleteUserByEmail(email);
+    }
+
+
 }
