@@ -20,6 +20,4 @@ public class UserCreationRequest {
     private String prenom;
     @Schema(description = "Mot de pass de l'utilisateur")
     private String motDePasse;
-    @Schema(description = "id de firebase")
-    private String firebaseUid;
 }
