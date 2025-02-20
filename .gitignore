@@ -47,3 +47,4 @@ dev/
 node_modules/
 # Exclure le fichier de configuration
 main/resources/application.yml
+

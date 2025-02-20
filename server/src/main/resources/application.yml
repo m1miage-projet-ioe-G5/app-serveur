@@ -12,7 +12,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/yourdb
     username: yourUserName
     password: yourPassWord
-
   jpa:
     open-in-view: false
     hibernate:

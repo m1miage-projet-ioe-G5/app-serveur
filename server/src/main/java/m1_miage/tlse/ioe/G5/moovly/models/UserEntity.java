@@ -8,6 +8,7 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.Set;
 
+
 @Entity
 @Builder
 @Getter
@@ -18,11 +19,9 @@ public class UserEntity {
         @Id
         @Column(nullable = false)
         private String email;
-
         private String nom;
         @Column
         private String prenom;
-
         @Column
        private LocalDate dateCreation;
         @NotBlank
