@@ -9,10 +9,9 @@ spring:
     name: projet-ioe
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/yourDB
+    url: jdbc:postgresql://localhost:5432/yourdb
     username: yourUserName
-    password: YourPassWord
-
+    password: yourPassWord
   jpa:
     open-in-view: false
     hibernate:
