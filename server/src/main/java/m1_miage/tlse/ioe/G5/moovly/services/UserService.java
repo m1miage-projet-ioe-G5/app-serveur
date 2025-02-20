@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import m1_miage.tlse.ioe.G5.moovly.components.UserComponent;
 import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.BadRequestRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.DeletedFailedRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.NotFoundRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.technical.UserNotFoundException;
 import m1_miage.tlse.ioe.G5.moovly.mappers.UserMapper;
 import m1_miage.tlse.ioe.G5.moovly.models.UserEntity;
 import m1_miage.tlse.ioe.G5.moovly.repositories.UserRepository;
 import m1_miage.tlse.ioe.G5.moovly.request.UserCreationRequest;
 import m1_miage.tlse.ioe.G5.moovly.response.UserResponseDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -20,6 +24,7 @@ public class UserService {
     private final UserComponent userComponent;
     private final  UserMapper userMapper;
 
+
 // Création du service
     public UserResponseDTO create(UserCreationRequest userCreationRequest) {
         try {
@@ -27,6 +32,33 @@ public class UserService {
             return userMapper.toUserResponseDTO(userComponent.createUser(userEntity));
         } catch (Exception e) {
             throw new BadRequestRestException(e.getMessage());
+        }
+    }
+
+    public List<UserResponseDTO> findAllUsers(){
+        try {
+            List<UserEntity> userEntities = userComponent.getAlls();
+            return userMapper.toUserResponseDTO(userEntities);
+        } catch (Exception e) {
+            throw  new NotFoundRestException(e.getMessage());
+        }
+    }
+
+    public UserResponseDTO findUserByEmail(String email){
+        try {
+            UserEntity userEntity = userComponent.getByemail(email);
+            return userMapper.toUserResponseDTO(userEntity);
+        } catch (UserNotFoundException | NotFoundRestException e) {
+            throw new NotFoundRestException(e.getMessage());
+        }
+    }
+    public void deleteUserByEmail(String email){
+        try {
+            userComponent.deleteUser(email);
+        } catch (UserNotFoundException e) {
+            throw new BadRequestRestException(e.getMessage());
+        } catch (DeletedFailedRestException e) {
+            throw new DeletedFailedRestException(e.getMessage());
         }
     }
 }

@@ -45,3 +45,6 @@ dev/
 
 # Exclure Node.js (si jamais utilisé)
 node_modules/
+# Exclure le fichier de configuration
+main/resources/application.yml
+
