@@ -18,8 +18,9 @@ public class SignalementEntity {
     @Id
     private Long id;
 
-    @Column(columnDefinition = "geometry",nullable = false)
-    private Point localisation;
+    private Double longitude ;
+
+    private Double latitude ;
 
     @Enumerated(EnumType.STRING)
     private EtatSignalement etatSignalement;
@@ -36,4 +37,7 @@ public class SignalementEntity {
 
     @ManyToOne
     private LieuEntity lieuEntity;
+
+    @ManyToOne
+    private ItineraireEntity itineraireEntity ;
 }
