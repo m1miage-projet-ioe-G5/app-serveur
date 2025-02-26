@@ -18,6 +18,7 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
+
   hibernate:
     dialect=org:
       hibernate:
