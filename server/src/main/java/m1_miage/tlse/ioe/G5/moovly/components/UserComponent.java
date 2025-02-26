@@ -5,6 +5,8 @@ import m1_miage.tlse.ioe.G5.moovly.exceptions.technical.UserNotFoundException;
 import m1_miage.tlse.ioe.G5.moovly.models.UserEntity;
 import m1_miage.tlse.ioe.G5.moovly.repositories.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
