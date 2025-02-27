@@ -11,6 +11,6 @@ public class SignalementNotFoundErrorResponse {
     @Schema(description = "end point call", example = "/api/v1/reports")
     private final String uri ;
 
-    @Schema(description = "error message", example = "Le signalement n'existe pas")
+    @Schema(description = "error message", example = "Le signalement S n'existe pas")
     private final String errorMessage ;
 }
