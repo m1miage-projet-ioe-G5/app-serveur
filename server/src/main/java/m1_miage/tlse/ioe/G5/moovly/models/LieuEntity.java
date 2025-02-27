@@ -18,8 +18,13 @@ public class LieuEntity {
     @Id
     private String numero;
     private String nom;
-    @Column(columnDefinition = "geometry",nullable = false)
-    private Point geoPosition;
+
+    @Column(nullable = false)
+    private Double longitude ;
+
+    @Column(nullable = false)
+    private Double latitude ;
+
     private boolean toiletteAdapte;
 
     private boolean rampeAccessible;
