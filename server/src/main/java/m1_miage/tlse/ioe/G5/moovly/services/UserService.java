@@ -5,6 +5,7 @@ import lombok.Data;
 import m1_miage.tlse.ioe.G5.moovly.components.UserComponent;
 import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.BadRequestRestException;
 import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.DeletedFailedRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.GettingFailedRestException;
 import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.NotFoundRestException;
 import m1_miage.tlse.ioe.G5.moovly.exceptions.technical.UserNotFoundException;
 import m1_miage.tlse.ioe.G5.moovly.mappers.UserMapper;
@@ -59,6 +60,21 @@ public class UserService {
             throw new BadRequestRestException(e.getMessage());
         } catch (DeletedFailedRestException e) {
             throw new DeletedFailedRestException(e.getMessage());
+        }
+    }
+
+    public int getNumberOfReportsByEmailUser(String email) {
+        try {
+            UserEntity userEntity = userComponent.getByemail(email) ;
+            return userEntity.getNbIncidentsReportes() ;
+        } catch (UserNotFoundException e) {
+            throw new NotFoundRestException(e.getMessage()) ;
+        }
+        catch (BadRequestRestException e) {
+            throw new BadRequestRestException(e.getMessage()) ;
+        }
+        catch (GettingFailedRestException e) {
+            throw new GettingFailedRestException(e.getMessage()) ;
         }
     }
 }

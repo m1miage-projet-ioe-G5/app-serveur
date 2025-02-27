@@ -18,8 +18,10 @@ public class SignalementEntity {
     @Id
     private Long id;
 
+    @Column(nullable = false)
     private Double longitude ;
 
+    @Column(nullable = false)
     private Double latitude ;
 
     @Enumerated(EnumType.STRING)

@@ -45,4 +45,13 @@ public class UserController implements UserEndpoint {
     }
 
 
+    /**
+     *
+     * @param email l'email de l'utilisateur à obtenir ses signalements
+     * @return le nombre des signalements de l'utilisateur
+     */
+    @Override
+    public int getNumberOfReportsByEmailUser(String email) {
+        return userService.getNumberOfReportsByEmailUser(email) ;
+    }
 }
