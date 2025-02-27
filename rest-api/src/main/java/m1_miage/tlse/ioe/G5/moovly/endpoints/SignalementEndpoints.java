@@ -17,7 +17,7 @@ import java.util.List;
 
 @Tag(name = "Gestion signalement", description = "Tous les endpoints de gestion d'un signalement")
 @RestController
-@RequestMapping("/api/v1/reports")
+@RequestMapping("v1/reports")
 public interface SignalementEndpoints {
 
     @Operation(description = "Création d'un signalement")
