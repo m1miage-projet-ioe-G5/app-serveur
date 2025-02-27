@@ -17,7 +17,5 @@ public class UserResponseDTO {
     private String nom;
     @Schema(description = "prenom de l'utilisateur")
     private String prenom;
-   @Schema(description = "Mot de passe de l'utilisateur")
-    private String motDePasse;
 
 }

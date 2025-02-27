@@ -6,11 +6,11 @@ import lombok.Data;
 
 @Data
 @Builder
-public class SignalementNotFoundErrorResponse {
+public class UserNotFoundErrorResponse {
 
-    @Schema(description = "end point call", example = "/api/v1/reports")
+    @Schema(description = "end point call", example = "/api/v1/user")
     private final String uri ;
 
-    @Schema(description = "error message", example = "Le signalement S n'existe pas")
+    @Schema(description = "error message", example = "L'utilisateur M n'existe pas")
     private final String errorMessage ;
 }

@@ -38,6 +38,8 @@ public class SignalementService {
             SignalementEntity signalementEntity = signalementMapper.signalementRequestToSignalementEntity(signalementCreationRequest) ;
             signalementEntity.setEtatSignalement(EtatSignalement.CREE);
             UserEntity userEntity = userComponent.getByemail(signalementCreationRequest.getEmailUser()) ;
+            userEntity.setNbIncidentsReportes(userEntity.getNbIncidentsReportes() + 1);
+            userComponent.createUser(userEntity) ;
             signalementEntity.setUserEntity(userEntity);
             if (signalementCreationRequest.getIdLieu() != null) {
                 LieuEntity lieuEntity = lieuComponent.getLieuById(signalementCreationRequest.getIdLieu()) ;
