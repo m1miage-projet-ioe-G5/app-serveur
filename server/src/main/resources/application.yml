@@ -9,15 +9,16 @@ spring:
     name: projet-ioe
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/moovlydb
-    username: postgres
-    password: Fello2020@
+    url: jdbc:postgresql://localhost:5432/yourdb
+    username: yourUserName
+    password: yourPassWord
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
+
   hibernate:
     dialect=org:
       hibernate:

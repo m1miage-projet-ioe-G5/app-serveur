@@ -3,11 +3,11 @@ package m1_miage.tlse.ioe.G5.moovly.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.Set;
-
 @Entity
 @Builder
 @Getter
@@ -18,7 +18,6 @@ public class UserEntity {
         @Id
         @Column(nullable = false)
         private String email;
-
         private String nom;
         @Column
         private String prenom;
@@ -31,7 +30,11 @@ public class UserEntity {
         private boolean notificationsEnabled;
 
         private String role;
+        private int nbIncidentsReportes ;
 
+        private int nbAlertesVerifies ;
+
+        private int nbAlertesRencontres ;
         @OneToMany(mappedBy = "userEntity")
         private Set<ItineraireEntity> itineraireEntities;
 

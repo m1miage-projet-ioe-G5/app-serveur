@@ -1,5 +1,4 @@
 package m1_miage.tlse.ioe.G5.moovly.exceptions.handler;
-
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import m1_miage.tlse.ioe.G5.moovly.errors.BadRequestErrorResponse;

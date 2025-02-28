@@ -23,7 +23,6 @@ public class UserController implements UserEndpoint {
     public List<UserResponseDTO> getAllUsers() {
         return userService.findAllUsers();
     }
-
     @Override
     public UserResponseDTO getUserByEmail(String email) {
         return userService.findUserByEmail(email);

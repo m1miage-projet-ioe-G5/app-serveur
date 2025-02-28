@@ -6,6 +6,7 @@ import m1_miage.tlse.ioe.G5.moovly.response.UserResponseDTO;
 
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
+import java.util.List;
 
 import java.util.List;
 
