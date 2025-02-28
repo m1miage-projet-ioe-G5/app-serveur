@@ -13,6 +13,7 @@ import java.util.List;
 @Component
 public class UserComponent {
     private final UserRepository userRepository;
+
     public UserEntity createUser(UserEntity userEntity){
         return userRepository.save(userEntity);
     }
