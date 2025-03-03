@@ -17,7 +17,7 @@ import java.util.List;
 
 @Tag(name = "Gestion signalement", description = "Tous les endpoints de gestion d'un signalement")
 @RestController
-@RequestMapping("/api/v1/reports")
+@RequestMapping("v1/reports")
 public interface SignalementEndpoints {
 
     @Operation(description = "Création d'un signalement")
@@ -47,7 +47,7 @@ public interface SignalementEndpoints {
                     content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class)))
     @ApiResponse(   responseCode = "404",
                     description  = "Signalement non trouvé",
-                    content = @Content(schema = @Schema(implementation = SignalementNotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+                    content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(   responseCode = "500",
                     description = "Echec de la mise à jour du signalement",
                     content = @Content(schema = @Schema(implementation = UpdatingFailedErrorResponse.class)))
@@ -63,7 +63,8 @@ public interface SignalementEndpoints {
                     content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class)))
     @ApiResponse(   responseCode = "404",
                     description  = "Signalement non trouvé",
-                    content = @Content(schema = @Schema(implementation = SignalementNotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+                    content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+
     @ApiResponse(   responseCode = "500",
                     description = "Echec de la suppression du signalement",
                     content = @Content(schema = @Schema(implementation = DeletingFailedErrorResponse.class)))

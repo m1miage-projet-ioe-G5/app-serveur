@@ -13,11 +13,18 @@ import org.springframework.data.geo.Point;
 public class ItineraireEntity {
     @Id
     private Long idItineraire;
-    @Column(columnDefinition = "geometry",nullable = false)
-    private Point startPoint;
 
-    @Column(columnDefinition = "geometry", nullable = false)
-    private Point endPoint;
+    @Column(nullable = false)
+    private Double startLongitude;
+
+    @Column(nullable = false)
+    private Double startLatitude;
+
+    @Column(nullable = false)
+    private Double endLongitude;
+
+    @Column(nullable = false)
+    private Double endLatitude;
 
     private double distance;
     private int estimatedTime;

@@ -1,6 +1,5 @@
 package m1_miage.tlse.ioe.G5.moovly.controllers;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import m1_miage.tlse.ioe.G5.moovly.endpoints.UserEndpoint;
 import m1_miage.tlse.ioe.G5.moovly.request.UserCreationRequest;
@@ -14,35 +13,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController implements UserEndpoint {
     private final UserService userService;
+
     @Override
     public UserResponseDTO createUser(UserCreationRequest userCreationRequest) {
         return userService.create(userCreationRequest);
     }
 
-    /**
-     * @return
-     */
     @Override
     public List<UserResponseDTO> getAllUsers() {
         return userService.findAllUsers();
     }
-    /**
-     * @param email
-     * @return
-     */
     @Override
     public UserResponseDTO getUserByEmail(String email) {
         return userService.findUserByEmail(email);
     }
 
-    /**
-     * @param email
-     * @return
-     */
     @Override
     public void deleteUserByEmail(String email) {
         userService.deleteUserByEmail(email);
     }
 
 
+    /**
+     *
+     * @param email l'email de l'utilisateur à obtenir ses signalements
+     * @return le nombre des signalements de l'utilisateur
+     */
+    @Override
+    public int getNumberOfReportsByEmailUser(String email) {
+        return userService.getNumberOfReportsByEmailUser(email) ;
+    }
 }

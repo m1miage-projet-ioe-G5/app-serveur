@@ -3,20 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <!-- Type d'emballage du projet (ici un fichier JAR) -->
     <packaging>jar</packaging>
-
     <!-- Identifiant du projet (nom de l'artefact) -->
     <artifactId>server</artifactId>
-
     <!-- Définition du parent du projet (projet principal dans lequel ce module est inclus) -->
     <parent>
         <groupId>m1-miage.tlse.ioe.G5</groupId>
         <artifactId>moovly.server</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
     <!-- Déclaration des dépendances de ce projet -->
     <dependencies>
         <!-- Dépendance vers le module rest-api de la version 0.0.1-SNAPSHOT -->
@@ -78,19 +74,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Dépendance vers Spring Data JPA pour la gestion de la persistance des données -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <!-- Dépendance pour la validation des données avec Hibernate Validator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
         <!-- Dépendance pour les tests unitaires avec JUnit 5 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -107,46 +100,46 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- Dépendance vers Springdoc pour intégrer Swagger avec Spring Boot -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springDoc.version}</version> <!-- Utilisation de la version centrale -->
         </dependency>
-
         <!-- Dépendance pour utiliser PostgreSQL dans l'application (en runtime) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <!-- Dépendance vers MapStruct pour la génération automatique de mappers entre objets -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
-
         <!-- Dépendance pour le client HTTP Apache HttpClient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.14</version>
         </dependency>
-
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+
 
 
     </dependencies>
