@@ -13,6 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import m1_miage.tlse.ioe.G5.moovly.errors.*;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @Slf4j
 @ControllerAdvice
@@ -65,5 +72,17 @@ public class HandlerException {
                 .build();
         log.warn(exception.getMessage());
         return ResponseEntity.status(403).body(response);
+    }
+
+    @ExceptionHandler(GettingFailedRestException.class)
+    public ResponseEntity<GettingFailedErrorResponse> handleGettingRequest(HttpServletRequest httpServletRequest,Exception e){
+        GettingFailedRestException exception = (GettingFailedRestException) e;
+        final GettingFailedErrorResponse response = GettingFailedErrorResponse
+                .builder()
+                .errorMessage(exception.getMessage())
+                .uri(httpServletRequest.getRequestURI())
+                .build();
+        log.warn(exception.getMessage());
+        return ResponseEntity.status(500).body(response);
     }
 }

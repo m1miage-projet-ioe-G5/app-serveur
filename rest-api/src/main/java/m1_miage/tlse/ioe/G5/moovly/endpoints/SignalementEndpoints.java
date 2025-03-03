@@ -47,7 +47,7 @@ public interface SignalementEndpoints {
                     content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class)))
     @ApiResponse(   responseCode = "404",
                     description  = "Signalement non trouvé",
-                    content = @Content(schema = @Schema(implementation = SignalementNotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+                    content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(   responseCode = "500",
                     description = "Echec de la mise à jour du signalement",
                     content = @Content(schema = @Schema(implementation = UpdatingFailedErrorResponse.class)))
@@ -63,7 +63,7 @@ public interface SignalementEndpoints {
                     content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class)))
     @ApiResponse(   responseCode = "404",
                     description  = "Signalement non trouvé",
-                    content = @Content(schema = @Schema(implementation = SignalementNotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
+                    content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class), mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(   responseCode = "500",
                     description = "Echec de la suppression du signalement",
                     content = @Content(schema = @Schema(implementation = DeletingFailedErrorResponse.class)))
