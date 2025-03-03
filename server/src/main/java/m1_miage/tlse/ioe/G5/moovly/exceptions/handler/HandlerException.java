@@ -1,4 +1,17 @@
 package m1_miage.tlse.ioe.G5.moovly.exceptions.handler;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import m1_miage.tlse.ioe.G5.moovly.errors.BadRequestErrorResponse;
+import m1_miage.tlse.ioe.G5.moovly.errors.CreationFailedErrorResponse;
+import m1_miage.tlse.ioe.G5.moovly.errors.ForbiddenErrorResponse;
+import m1_miage.tlse.ioe.G5.moovly.errors.NotFoundErrorResponse;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.BadRequestRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.CreationFailedRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.ForbiddenRestException;
+import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.NotFoundRestException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +20,6 @@ import m1_miage.tlse.ioe.G5.moovly.exceptions.rest.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
 
 @Slf4j
 @ControllerAdvice
