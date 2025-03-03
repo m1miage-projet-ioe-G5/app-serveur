@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public class SignalementEntity {
     @Id
     private Long id;
-
     @Column(nullable = false)
     private Double longitude ;
 
