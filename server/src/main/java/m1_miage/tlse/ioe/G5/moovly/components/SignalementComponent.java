@@ -23,7 +23,7 @@ public class SignalementComponent {
     }
 
     public SignalementEntity getSignalementById(Long idSignalement) throws SignalementNotFoundException {
-        return signalementRepository.findById(String.valueOf(idSignalement))
+        return signalementRepository.findById((idSignalement))
                 .orElseThrow(() -> new SignalementNotFoundException(String.format("Signalement [%s] non trouvé", idSignalement))) ;
     }
 
@@ -32,8 +32,8 @@ public class SignalementComponent {
     }
 
     public void deleteSignalementById(Long idSignalement) throws SignalementNotFoundException {
-        signalementRepository.findById(String.valueOf(idSignalement))
+        signalementRepository.findById(idSignalement)
                 .orElseThrow(() -> new SignalementNotFoundException(String.format("Signalement [%s] non trouvé", idSignalement))) ;
-        signalementRepository.deleteById(String.valueOf(idSignalement)) ;
+        signalementRepository.deleteById(idSignalement) ;
     }
 }
