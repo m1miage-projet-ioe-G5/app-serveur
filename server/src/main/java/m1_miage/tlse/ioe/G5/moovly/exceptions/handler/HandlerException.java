@@ -35,7 +35,7 @@ public class HandlerException {
                 .errorMessage(exception.getMessage())
                 .build();
         HandlerException.log.warn(exception.getMessage());
-        return ResponseEntity.status(400).body(response);
+        return ResponseEntity.status(404).body(response);
     }
 
     @ExceptionHandler(NotFoundRestException.class)

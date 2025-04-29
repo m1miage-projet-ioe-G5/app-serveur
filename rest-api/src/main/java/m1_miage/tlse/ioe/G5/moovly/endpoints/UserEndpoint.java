@@ -18,7 +18,6 @@ import java.util.List;
 @RequestMapping("v1/user")
 @CrossOrigin(origins = "http://localhost:4300")
 public interface UserEndpoint {
-
     @ApiResponse(responseCode = "201", description = "Création réussie")
     @ApiResponse(responseCode = "400" ,
             description = "L'utilisateur n'a pas été créer",
