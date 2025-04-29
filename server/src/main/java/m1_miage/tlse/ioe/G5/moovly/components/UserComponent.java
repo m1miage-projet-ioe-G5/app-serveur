@@ -32,7 +32,7 @@ public class UserComponent {
 
     public void deleteUser(String email) throws UserNotFoundException{
        userRepository.findById(email).orElseThrow(()->
-               new UsernameNotFoundException("Utilisateur non trouvé par: [%s]"));
+               new UserNotFoundException("Utilisateur non trouvé par: [%s]"));
        userRepository.deleteById(email);
     }
 }

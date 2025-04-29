@@ -35,7 +35,6 @@ public class UserService {
             throw new BadRequestRestException(e.getMessage());
         }
     }
-
     public List<UserResponseDTO> findAllUsers(){
         try {
             List<UserEntity> userEntities = userComponent.getAlls();
@@ -44,7 +43,6 @@ public class UserService {
             throw  new NotFoundRestException(e.getMessage());
         }
     }
-
     public UserResponseDTO findUserByEmail(String email){
         try {
             UserEntity userEntity = userComponent.getByemail(email);
@@ -62,7 +60,6 @@ public class UserService {
             throw new DeletedFailedRestException(e.getMessage());
         }
     }
-
     public int getNumberOfReportsByEmailUser(String email) {
         try {
             UserEntity userEntity = userComponent.getByemail(email) ;
