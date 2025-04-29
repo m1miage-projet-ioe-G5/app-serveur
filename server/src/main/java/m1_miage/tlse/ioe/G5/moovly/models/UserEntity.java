@@ -15,26 +15,29 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
-        @Id
-        @Column(nullable = false)
-        private String email;
+    @Id
+    @Column(nullable = false)
+    private String email;
+    private String nom;
+    @Column
+    private String prenom;
 
-        private String nom;
-        @Column
-        private String prenom;
+    @Column
+    private LocalDate dateCreation;
+    @NotBlank
+    private String motDePasse;
+    @Column
+    private boolean notificationsEnabled;
 
-        @Column
-       private LocalDate dateCreation;
-        @NotBlank
-        private String motDePasse;
-        @Column
-        private boolean notificationsEnabled;
+    private String role;
+    private int nbIncidentsReportes ;
 
-        private String role;
+    private int nbAlertesVerifies ;
 
-        @OneToMany(mappedBy = "userEntity")
-        private Set<ItineraireEntity> itineraireEntities;
+    private int nbAlertesRencontres ;
+    @OneToMany(mappedBy = "userEntity")
+    private Set<ItineraireEntity> itineraireEntities;
 
-        @OneToMany(mappedBy = "userEntity")
-        private Set<SignalementEntity> signalementEntities;
+    @OneToMany(mappedBy = "userEntity")
+    private Set<SignalementEntity> signalementEntities;
 }

@@ -51,7 +51,7 @@ public class UserServiceTest {
         UserResponseDTO userDTO1 = userService.create(user1);
         UserResponseDTO userDTO2 = userService.create(user2);
         List<UserResponseDTO> users = userService.findAllUsers();
-        assertEquals(3, users.size());
+        assertEquals(2, users.size());
 
         assertTrue(users.stream().anyMatch(u ->u.getEmail().equals("leo@gmail.com")));
         assertTrue(users.stream().anyMatch(u ->u.getEmail().equals("martine@gmail.com")));
