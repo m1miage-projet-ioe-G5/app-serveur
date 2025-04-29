@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import m1_miage.tlse.ioe.G5.moovly.errors.*;
 import m1_miage.tlse.ioe.G5.moovly.request.UserCreationRequest;
 import m1_miage.tlse.ioe.G5.moovly.response.UserResponseDTO;
@@ -14,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Gestion des utilisateurs", description = "Les endpoints d'un utilisateur")
 @RequestMapping("v1/user")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4300")
 public interface UserEndpoint {
-
     @ApiResponse(responseCode = "201", description = "Création réussie")
     @ApiResponse(responseCode = "400" ,
             description = "Requête invalide",
@@ -27,27 +28,27 @@ public interface UserEndpoint {
     @ApiResponse(   responseCode = "500",
             description = "Echec de la création d'un utilisateur",
             content = @Content(schema = @Schema(implementation = CreationFailedErrorResponse.class),
-            mediaType = MediaType.APPLICATION_JSON_VALUE))
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(responseCode = "403",description = "Accès refusé",
-        content = @Content(schema =  @Schema(implementation = ForbiddenErrorResponse.class),
-        mediaType = MediaType.APPLICATION_JSON_VALUE))
+            content = @Content(schema =  @Schema(implementation = ForbiddenErrorResponse.class),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     UserResponseDTO createUser(@RequestBody UserCreationRequest userCreationRequest);
 
     @ApiResponse(responseCode = "200", description = "Récuperation réussie")
     @ApiResponse(responseCode = "400",description = "Requête invalide",
-        content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class),
-        mediaType = MediaType.APPLICATION_JSON_VALUE))
+            content = @Content(schema = @Schema(implementation = BadRequestErrorResponse.class),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(responseCode = "403", description = "Accès refusé",
-        content = @Content(schema = @Schema(implementation = ForbiddenErrorResponse.class),
-                mediaType = MediaType.APPLICATION_JSON_VALUE))
+            content = @Content(schema = @Schema(implementation = ForbiddenErrorResponse.class),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(responseCode = "404",description = "Aucun utilisateur trouvé",
-        content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),
-                mediaType = MediaType.APPLICATION_JSON_VALUE))
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ApiResponse(responseCode = "500", description = "Problème de récupération",
-        content = @Content(schema = @Schema(implementation = GettingFailedErrorResponse.class),
-                mediaType = MediaType.APPLICATION_JSON_VALUE))
+            content = @Content(schema = @Schema(implementation = GettingFailedErrorResponse.class),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/")
     List<UserResponseDTO> getAllUsers();
@@ -103,3 +104,4 @@ public interface UserEndpoint {
     @GetMapping("/{email}/reports/total")
     int getNumberOfReportsByEmailUser(@PathVariable(name = "email") String email) ;
 }
+

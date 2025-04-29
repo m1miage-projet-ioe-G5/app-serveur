@@ -21,8 +21,10 @@ public class UserController implements UserEndpoint {
 
     @Override
     public List<UserResponseDTO> getAllUsers() {
+
         return userService.findAllUsers();
     }
+
     @Override
     public UserResponseDTO getUserByEmail(String email) {
         return userService.findUserByEmail(email);
@@ -30,10 +32,9 @@ public class UserController implements UserEndpoint {
 
     @Override
     public void deleteUserByEmail(String email) {
+
         userService.deleteUserByEmail(email);
     }
-
-
     /**
      *
      * @param email l'email de l'utilisateur à obtenir ses signalements
