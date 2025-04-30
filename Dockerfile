@@ -1,26 +1,25 @@
-# Étape de build
-FROM eclipse-temurin:22-jdk-jammy as builder
-WORKDIR /workspace/app
+# Build stage
+FROM maven:3.8.6-eclipse-temurin-17 AS builder
 
-# Copie des fichiers pom.xml et source
+WORKDIR /workspace
+# Copy all POMs first for better cache utilization
 COPY pom.xml .
-COPY src src
+COPY rest-api/pom.xml rest-api/pom.xml
+COPY server/pom.xml server/pom.xml
 
-# Build avec Maven en excluant les tests
-RUN ./mvnw clean package -DskipTests
+# Download dependencies
+RUN mvn -B dependency:go-offline
 
-# Étape d'exécution
-FROM eclipse-temurin:22-jre-jammy
-VOLUME /tmp
+# Copy sources
+COPY rest-api/src rest-api/src
+COPY server/src server/src
+
+# Build only the server module but include dependencies
+RUN mvn -B package -pl server -am -DskipTests
+
+# Runtime stage
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
-
-# Copie du JAR depuis l'étape de build
-COPY --from=builder /workspace/app/target/*.jar app.jar
-
-# Configuration pour Render
-ENV SPRING_PROFILES_ACTIVE=prod
-ENV JAVA_OPTS="-Xmx512m -Xms256m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
-
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app/app.jar"]
-
-EXPOSE 8081
+COPY --from=builder /workspace/server/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
