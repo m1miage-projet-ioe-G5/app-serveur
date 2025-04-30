@@ -1,25 +1,18 @@
-# Étape de build
-FROM eclipse-temurin:22-jdk-jammy AS builder
-WORKDIR /workspace
-
-# Copier le projet complet (pom parent + modules)
+FROM maven AS build
+WORKDIR /moovly.server
 COPY . .
+RUN mvn clean install
 
-# Construction uniquement du module 'serveur' (le module exécutable)
-RUN ./mvnw clean package -pl server -am -DskipTests
+FROM adoptopenjdk/openjdk22 AS deploy
+LABEL description="Java 22 Docker image build to run moovly server"
 
-# Étape d'exécution
-FROM eclipse-temurin:22-jre-jammy
-VOLUME /tmp
-WORKDIR /app
+ARG JAR_FILE="/moovly.server/server/target/Projet-IOE-Moovly.jar"
+ENV TZ="Europe/Paris"
+ENV spring_profiles_active="dev"
 
-# Copie du JAR généré pour le module 'serveur'
-COPY --from=builder /workspace/server/target/*.jar app.jar
-
-# Configuration d'environnement
-ENV SPRING_PROFILES_ACTIVE=prod
-ENV JAVA_OPTS="-Xmx512m -Xms256m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
-
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app/app.jar"]
+COPY --from=build ${JAR_FILE} /opt/app/app.jar
+RUN chmod +x /opt/app/app.jar
 
 EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "/opt/app/app.jar"]
