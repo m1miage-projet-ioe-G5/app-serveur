@@ -1,8 +1,9 @@
-server:
-  port: ${PORT:8080}  # Railway injecte automatiquement $PORT
-
 spring:
   datasource:
-    url: ${DATABASE_URL}  # Railway fournira cette variable
-    hikari:
-      maximum-pool-size: 3  # Limité en version gratuite
+    url: jdbc:postgresql://localhost:5432/moovlydb
+    username: postgres
+    password: Fello2020@
+
+  sql:
+    init:
+      mode: always
