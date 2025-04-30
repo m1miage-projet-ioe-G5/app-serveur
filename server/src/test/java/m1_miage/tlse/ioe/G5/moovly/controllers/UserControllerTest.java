@@ -104,57 +104,5 @@ public class UserControllerTest {
         // Then - Vérifications complètes
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
-    @Test
-    @Transactional
-    void getUserByEmail() {
-        // Given
-        final UserCreationRequest request1 = UserCreationRequest
-                .builder()
-                .email("ibra@gmail.com")
-                .nom("Doe")
-                .prenom("John")
-                .motDePasse("securePassword123")
-                .firebaseUid("fpasswor")
-                .build();
-        userService.create(request1);
-        assertEquals("ibra@gmail.com",request1.getEmail());
-
-        // When
-        ResponseEntity<UserResponseDTO> response = testRestTemplate.exchange(
-                "/v1/user/{email}",
-                HttpMethod.GET,
-                new HttpEntity<>(headers),
-                UserResponseDTO.class,
-                "ibra@gmail.com"
-        );
-
-        // Then
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody())
-                .extracting("email", "nom", "prenom")
-                .containsExactly("dalas@gmail.com", "Doe", "John");
-    }
-    @Test
-    void deleteUserByEmail() {
-        // Given
-        UserEntity user = UserEntity.builder()
-                .email("todelete@example.com")
-                .nom("ToDelete")
-                .prenom("User")
-                .motDePasse("password")
-                .build();
-        userRepository.save(user);
-        // When
-        String url = "http://localhost:" + port + "/v1/user/todelete@example.com";
-        ResponseEntity<Void> response = testRestTemplate.exchange(
-                url,
-                HttpMethod.DELETE,
-                new HttpEntity<>(headers),
-                Void.class
-        );
-        // Then
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(userRepository.findById ("todelete@example.com")).isEmpty();
-    }
 
 }

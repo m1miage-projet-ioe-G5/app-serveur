@@ -1,39 +1,8 @@
-version: '3.8'
-
 services:
-  postgres:
-    image: postgres:15
-    container_name: moovly-postgres
-    environment:
-      POSTGRES_USER: postgres  # Correction : "postgres" au lieu de "postres"
-      POSTGRES_PASSWORD: Fello2020@
-      POSTGRES_DB: moovlydb
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
-  moovly-app:  # Nom explicite pour votre application
-    build: .  # Utilise le Dockerfile local pour construire l'image
-    image: moovly-app:1.0  # Nom et tag de l'image
-    container_name: moovly-app
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/moovlydb
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: Fello2020@
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update  # Important pour la gestion du schéma
-    depends_on:
-      postgres:
-        condition: service_healthy
+  moovly-app:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: moovly-app:1.0
     ports:
       - "8080:8080"
-    restart: unless-stopped
-
-volumes:
-  postgres_data:
