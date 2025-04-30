@@ -6,7 +6,7 @@ WORKDIR /workspace
 COPY . .
 
 # Construction uniquement du module 'serveur' (le module exécutable)
-RUN ./mvnw clean package -pl serveur -am -DskipTests
+RUN ./mvnw clean package -pl server -am -DskipTests
 
 # Étape d'exécution
 FROM eclipse-temurin:22-jre-jammy
@@ -14,7 +14,7 @@ VOLUME /tmp
 WORKDIR /app
 
 # Copie du JAR généré pour le module 'serveur'
-COPY --from=builder /workspace/serveur/target/*.jar app.jar
+COPY --from=builder /workspace/server/target/*.jar app.jar
 
 # Configuration d'environnement
 ENV SPRING_PROFILES_ACTIVE=prod
