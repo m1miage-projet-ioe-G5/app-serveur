@@ -21,5 +21,5 @@ RUN mvn -B package -pl server -am -DskipTests
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=builder /workspace/server/target/*.jar app.jar
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "app.jar"]
