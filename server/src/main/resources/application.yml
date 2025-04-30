@@ -8,9 +8,10 @@ spring:
     name: projet-ioe
 
   datasource:
-    url: jdbc:postgresql://dpg-d08h3pqli9vc739qjmtg-a:5432/moovly_db?sslmode=require
-    username: moovly_db_user
-    password: yszVEVrHB8xZdTIXEY52HAzHcfGO3Uu8
+    datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 5
