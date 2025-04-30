@@ -1,0 +1,24 @@
+# Ignorer les fichiers de build
+  target/
+  */target/
+  
+  # Fichiers de configuration locaux
+    .idea/
+  *.iml
+  *.log
+  *.env
+  *.swp
+  
+  # Fichiers système
+    .DS_Store
+    Thumbs.db
+  
+  # Git
+    .git/
+    .gitignore
+  
+  # Dockerfile lui-même (facultatif)
+    Dockerfile
+    .dockerignore
+
+
