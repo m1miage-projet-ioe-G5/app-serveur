@@ -6,3 +6,4 @@ services:
     image: moovly-app:1.0
     ports:
       - "8080:8080"
+
