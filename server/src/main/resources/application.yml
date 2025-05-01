@@ -1,36 +1,24 @@
-server:
-  port: 8081
-  servlet:
-    context-path: /api
-
 spring:
-  application:
-    name: projet-ioe
-
   datasource:
-    url: jdbc:postgresql://dpg-d08h3pqli9vc739qjmtg-a:5432/moovly_db?sslmode=require
-    username: moovly_db_user
-    password: yszVEVrHB8xZdTIXEY52HAzHcfGO3Uu8
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      connection-timeout: 30000
-      maximum-pool-size: 5
-      initialization-fail-timeout: 0
-
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
-    open-in-view: false
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
-        format_sql: true
-        connection.provider_disables_autocommit: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
