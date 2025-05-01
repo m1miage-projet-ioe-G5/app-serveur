@@ -2,33 +2,30 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: moovly_user
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-defaultpassword} # Valeur par défaut
+      POSTGRES_USER: postgres  # Utilisateur par défaut
+      POSTGRES_PASSWORD: Fello2020@  # Mot de passe direct pour le dev
       POSTGRES_DB: moovlydb
     ports:
-      - "127.0.0.1:5432:5432"
+      - "5432:5432"  # Plus simple sans restriction localhost
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U moovly_user"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  # User corrigé
       interval: 5s
 
   app:
     build:
-      context: . # Racine du projet
-      dockerfile: server/Dockerfile # Chemin relatif correct
+      context: .
+      dockerfile: server/Dockerfile
     environment:
-      DATABASE_URL: jdbc:postgresql://postgres:5432/moovlydb
-      DATABASE_USERNAME: moovly_user
-      DATABASE_PASSWORD: ${DB_PASSWORD:-defaultpassword}
+      DATABASE_URL: jdbc:postgresql://postgres:5432/moovlydb?sslmode=disable  # SSL désactivé en local
+      DATABASE_USERNAME: postgres  # Doit matcher le user PostgreSQL
+      DATABASE_PASSWORD: Fello2020@  # Direct dans le compose pour le dev
     ports:
-      - "127.0.0.1:8080:8080"
+      - "8080:8080"
     depends_on:
       postgres:
         condition: service_healthy
-    restart: unless-stopped
 
 volumes:
-  postgres_data:
-
+  postgres_data: 
