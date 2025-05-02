@@ -1,24 +1,32 @@
+server:
+  port: 8081
+  servlet:
+    #application context
+    context-path: /api
+
 spring:
+  application:
+    name: projet-ioe
+
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/moovlydb
+    username: postgres
+    password: Fello2020@
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
-    show-sql: true
-    properties:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+
+  hibernate:
+    dialect=org:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        spatial:
+          dialect:
+            PostgisDialect:
 
-server:
-  port: ${PORT:8080}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-  endpoint:
-    health:
-      show-details: always
+logging:
+  level:
+    org.hibernate.SQL: OFF
+    org.hibernate.type.descriptor.sql.BasicBinder: OFF
