@@ -16,8 +16,11 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class SignalementEntity {
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
+
     @Column(nullable = false)
     private Double longitude ;
 
