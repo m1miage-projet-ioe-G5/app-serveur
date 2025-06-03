@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import m1_miage.tlse.ioe.G5.moovly.enums.TypeMobilite;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -30,6 +31,10 @@ public class UserEntity {
     private boolean notificationsEnabled;
 
     private String role;
+
+    // rajouté par Khalil
+    private TypeMobilite typeMobilite;
+
     private int nbIncidentsReportes ;
 
     private int nbAlertesVerifies ;

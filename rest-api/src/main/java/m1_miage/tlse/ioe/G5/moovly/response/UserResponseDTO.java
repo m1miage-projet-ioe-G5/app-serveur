@@ -2,6 +2,7 @@ package m1_miage.tlse.ioe.G5.moovly.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
+import m1_miage.tlse.ioe.G5.moovly.enums.TypeMobilite;
 
 import java.time.LocalDateTime;
 
@@ -18,4 +19,7 @@ public class UserResponseDTO {
     @Schema(description = "prenom de l'utilisateur")
     private String prenom;
 
+    // rajouté par Khalil
+    @Schema(description = "type de mobilité de l'utilisateur")
+    private TypeMobilite typeMobilite ;
 }

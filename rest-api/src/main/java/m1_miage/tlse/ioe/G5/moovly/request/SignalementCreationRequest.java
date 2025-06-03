@@ -14,9 +14,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class SignalementCreationRequest {
 
-    @Schema(description = "id du signalement")
-    private Long id ;
-
     @Schema(description = "longitude du lieu de signalement")
     private Double longitude ;
 
